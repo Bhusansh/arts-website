@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Cinzel } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,33 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cinzel.variable} h-full antialiased scroll-smooth`}>
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-gold selection:text-black">
-        {/* Navigation - Mobile First */}
-        <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
-          <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-            {/* Mobile: Hamburger placeholder */}
-            <button className="md:hidden p-2 -ml-2 text-white hover:text-gold transition-colors" aria-label="Menu">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
-            
-            {/* Logo */}
-            <Link href="/" className="font-heading text-2xl tracking-[0.2em] font-bold text-white hover:text-gold transition-colors">
-              KARMA
-            </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex gap-8 text-xs uppercase tracking-[0.2em] font-medium">
-              <Link href="/" className="hover:text-gold transition-colors">Home</Link>
-              <Link href="/arts" className="hover:text-gold transition-colors">Arts</Link>
-              <Link href="/journey" className="hover:text-gold transition-colors">Journey</Link>
-              <Link href="/contact" className="hover:text-gold transition-colors">Contact</Link>
-            </nav>
-
-            {/* Empty div for flex balance on mobile */}
-            <div className="w-6 md:hidden"></div>
-          </div>
-        </header>
+        <Navbar />
 
         <main className="flex-1 flex flex-col w-full">
           {children}
@@ -113,18 +88,17 @@ export default function RootLayout({
                 <h4 className="text-sm font-heading tracking-widest mb-6 text-gold">Connect</h4>
                 <div className="flex gap-4">
                   {/* Instagram Icon */}
-                  <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
+                  <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                     </svg>
                   </a>
-                  {/* Twitter/X Icon */}
-                  <a href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
+                  {/* Facebook Icon */}
+                  <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-gold hover:text-gold transition-all duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
-                      <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                     </svg>
                   </a>
                 </div>
